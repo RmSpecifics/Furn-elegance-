@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  overflow-x: clip;
+}
+
+body {
+  @apply bg-cream font-sans text-charcoal antialiased;
+}
+
+h1,
+h2,
+h3 {
+  @apply font-serif font-medium tracking-tight text-walnut;
+}
+
+::selection {
+  background: #b68a56;
+  color: #241b15;
+}
+
+.btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-medium tracking-wide transition-all duration-300;
+}
+.btn-primary {
+  @apply bg-walnut text-cream hover:bg-oak hover:text-walnut;
+}
+.btn-ghost {
+  @apply border border-walnut/30 text-walnut hover:border-walnut hover:bg-walnut hover:text-cream;
+}
+.input {
+  @apply w-full rounded-xl border border-walnut/15 bg-white px-4 py-3 text-sm outline-none transition focus:border-oak focus:ring-2 focus:ring-oak/30;
+}
+.section {
+  @apply mx-auto max-w-6xl px-5 py-24 md:py-32;
+}
+.eyebrow {
+  @apply mb-4 text-[11px] font-medium uppercase tracking-[0.3em] text-oak;
+}
+.display {
+  @apply font-serif text-5xl leading-[1.02] md:text-7xl;
+}
+.h2 {
+  @apply font-serif text-4xl leading-[1.05] md:text-6xl;
+}
+
+.grain {
+  background-image: repeating-linear-gradient(
+    92deg,
+    rgba(255, 255, 255, 0.025) 0,
+    rgba(255, 255, 255, 0.025) 2px,
+    transparent 2px,
+    transparent 9px
+  );
+}
+
+/* slideshow progress bar: advancing the slide when this animation ends keeps pause/resume in sync */
+@keyframes progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+.progress-fill {
+  transform-origin: left;
+  animation: progress 7s linear forwards;
+}
+.paused .progress-fill {
+  animation-play-state: paused;
+}
+
+/* custom cursor (only switched on for devices with a real pointer) */
+html.has-cursor,
+html.has-cursor a,
+html.has-cursor button,
+html.has-cursor [data-cursor] {
+  cursor: none;
+}
+html.has-cursor input,
+html.has-cursor textarea,
+html.has-cursor select {
+  cursor: text;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progress-fill {
+    animation-duration: 0.01s;
+  }
+}
